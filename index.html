@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./js/database.js">
+    <link rel="stylesheet" href="./js/index.js">
+</head>
+<body>
+    <header>
+        <img src="./img/logoModas.png" alt="logo super modas" id="logo">
+        <nav class="navInicio">
+            <p class="menu"><strong>Todos</strong></p>
+            <p class="menu">Acessórios</p>
+            <p class="menu">Agasalhos</p>
+            <p class="menu">Camisetas</p>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contDosProdutos">
+            <div class="card">
+                <figure class="imagem-product">
+                    <img src="./img/camiseta_branca.svg" alt="camiseta branca" class="foto-product">
+                </figure>
+                <span class="category"><small>Camisetas</small></span>
+                <h3 class="nomeProd">Camiseta Branca</h3>
+                <p class="descript">Camiseta branca simples de algodão</p>
+                <p class="price">R$ 60,00</p>
+                <button class="addCart"><small>Adicionar ao carrinho</small></button>
+            </div>
+
+            <div class="card">
+                <figure class="imagem-product">
+                    <img src="./img/camiseta_preta.svg" alt="camiseta preta" class="foto-product">
+                </figure>
+                <span class="category"><small>Camisetas</small></span>
+                <h3 class="nomeProd">Camiseta Preta</h3>
+                <p class="descript">Camiseta preta simples de algodão</p>
+                <p class="price">R$ 60,00</p>
+                <button class="addCart"><small>Adicionar ao carrinho</small></button>
+            </div>
+
+            <div class="card">
+                <figure class="imagem-product">
+                    <img src="./img/gorro.svg" alt="gorro" class="foto-product">
+                </figure>
+                <span class="category"><small>Acessórios</small></span>
+                <h3 class="nomeProd">Gorro preto</h3>
+                <p class="descript">Gorro preto de algodão, ótimo para o frio (principalmente para as orelhas)</p>
+                <p class="price">R$ 30,00</p>
+                <button class="addCart"><small>Adicionar ao carrinho</small></button>
+            </div>
+
+            <div class="card">
+                <figure class="imagem-product">
+                    <img src="./img/jaqueta.svg" alt="Jaqueta" class="foto-product">
+                </figure>
+                <span class="category"><small>Agasalhos</small></span>
+                <h3 class="nomeProd">Jaqueta Preta</h3>
+                <p class="descript">Jaqueta preta corta vento, proteção completa contra o frio.</p>
+                <p class="price">R$ 120,00</p>
+                <button class="addCart"><small>Adicionar ao carrinho</small></button>
+            </div>
+
+            <div class="card">
+                <figure class="imagem-product">
+                    <img src="./img/mascara.svg" alt="mascara" class="foto-product">
+                </figure>
+                <span class="category"><small>Acessórios</small></span>
+                <h3 class="nomeProd">Máscara</h3>
+                <p class="descript">Proteção total contra doenças respiratórias</p>
+                <p class="price">R$ 10,00</p>
+                <button class="addCart"><small>Adicionar ao carrinho</small></button>
+            </div>
+
+            <div class="card">
+                <figure class="imagem-product">
+                    <img src="./img/moletom.svg" alt="Moletom" class="foto-product">
+                </figure>
+                <span class="category"><small>Agasalhos</small></span>
+                <h3 class="nomeProd">Moletom Preto</h3>
+                <p class="descript">Moletom Preto. Básico, mas eficiente contra o frio</p>
+                <p class="price">R$ 80,00</p>
+                <button class="addCart"><small>Adicionar ao carrinho</small></button>
+            </div>
+
+        </section>
+
+        <section class="carrinho">
+            <div>
+                <input type="text" placeholder="Digite aqui sua pesquisa">
+                <button id="btnPesquisa">Pesquisar</button> 
+            </div>
+            <div>
+                <span><h3 class="cartRoxo">Carrinho de compras</h3></span>
+                <div class="dentro-cart">
+                    <h2>Carrinho vazio</h2>
+                    <small class="txtItens">Adicione Itens</small>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+    
+</body>
+</html>
