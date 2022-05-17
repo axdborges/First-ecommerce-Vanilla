@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
 body {
-    width: auto;
+    max-width: 100000px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -17,7 +17,10 @@ p{
 header {
     max-width: 10000px;
     height: 85px;
+    margin-left: 0;
+    margin-right: 0;
     margin-bottom: 50px;
+    border: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +39,7 @@ header {
 }
 
 .menu {
-    margin-right: 7px;
+    margin-right:20px;
 }
 
 .menu:hover {
@@ -66,8 +69,8 @@ main{
 }
 
 .card {
-    width: 200px;
-    height: 350px;
+    width: 250px;
+    height: 360px;
     margin: 10px;
     padding: 0;
     display: flex;
@@ -82,9 +85,19 @@ main{
 }
 
 .card:hover {
-    width: 250px;
-    height: 400px;
+    width: 270px;
+    height: 385px;
 
+}
+
+input {
+    width: 190px;
+    height: 44px;
+}
+
+#btnPesquisa {
+    width: 96px;
+    height: 50px;
 }
 
 .descript{
@@ -139,6 +152,7 @@ main{
 button {
     background-color: #37268C;
     color: white;
+    
 }
 
 button:hover {
@@ -208,9 +222,52 @@ button:hover {
     display: flex;
     max-width: 400px;
     justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 
 .imgCart {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    margin: 0;
 }
+
+.nomeCart {
+    display: flex;
+    flex-direction: column;
+    font-size: 17px;
+    margin: 0;
+}
+
+.priceCart {
+    font-weight: bold;
+    margin: 0;
+    font-size: 14px;
+}
+
+.removeCart {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+.totalCart {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qtdDivCart {
+    font-weight: bold;
+}
+
+.totalDivCart {
+    font-weight: bold;
+}
+
