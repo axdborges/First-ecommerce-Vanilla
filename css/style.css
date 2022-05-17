@@ -172,6 +172,7 @@ button:hover {
     width: 300px;
     background-color: #37268C;
     color: white;
+    margin-right: 0;
     margin-bottom: 0;
     font-size: medium;
     height: 30px;
@@ -193,3 +194,23 @@ button:hover {
     margin-bottom: 30px;
 }
 
+.dentroCartClick {
+    background-color: rgb(205, 200, 200);
+    display: none;
+}
+
+.listaCart {
+    margin: 0;
+    padding: 0;
+}
+
+.newPdt {
+    display: flex;
+    max-width: 400px;
+    justify-content: space-around;
+}
+
+.imgCart {
+    width: 100px;
+    height: 100px;
+}
