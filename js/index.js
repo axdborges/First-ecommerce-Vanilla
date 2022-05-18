@@ -133,8 +133,6 @@ function adicionarCards (array) {
 }
 adicionarCards(data)
 
-// 3- Evento remove cart
-
 const cartZerado = document.querySelector(".dentro-cart")
 const listaVitrine = document.querySelector(".contDosProdutos")
 const listaCarrinho = document.querySelector(".carrinho")
@@ -149,11 +147,9 @@ pegarDivTotal.insertAdjacentHTML("beforeend", ` <p class="qtdDivCart"></p><p cla
 const divCartParagrafo = document.querySelector(".qtdDivCart")
 const divCartTotal = document.querySelector(".totalDivCart")
 const pegaLi = document.querySelector(".newPdt")
-// se nao precisar exclui dps
 const pegaNomeCart = document.querySelector(".nomeCart")
 const pegaPriceCart = document.querySelector(".priceCart")
-// const pegarLiComId = data[0].id
-
+const produtosCarrinho = []
 
 listaVitrine.addEventListener("click", identificaItem) 
 listaCarrinho.addEventListener("click", identificaItem)
@@ -170,10 +166,6 @@ function identificaItem (event) {
     }
 }
 
-const produtosCarrinho = []
-
-
-// tirar as repetições depois
 function adicionarCarrinho (button){ 
   const numButton = button.id - 1
   cartZerado.classList.add("dentroCartClick")
@@ -196,20 +188,12 @@ function adicionarCarrinho (button){
   divCartTotal.innerHTML = `Total: R$ ${totalVendas},00 `
 }
 
-const ulToArray = document.getElementsByClassName("listaCart")
-
-
-// se for dar display invisível, utilizar o bubbling pra aplicar invisível no pai
-// transformar a Ul pai do carrinho em array e os LI em index
-// OU condicionar cada LI a um ID único ou colocar o ID do li baseado index do array UL
-// remover a li desse array
 function removeCarrinho (button) {
   listaCart.innerHTML = ""
   const procurar = produtosCarrinho.find((item) => button.id == item.id)
   const indiceCarrinho = produtosCarrinho.indexOf(procurar)
   totalVendas -= produtosCarrinho[indiceCarrinho].value
   produtosCarrinho.splice(indiceCarrinho, 1)
-  console.log(produtosCarrinho)
   for(let i = 0; i < produtosCarrinho.length; i++){
     listaCart.insertAdjacentHTML("beforeend", 
       `<li class= "newPdt" id="${produtosCarrinho[i].id}">
