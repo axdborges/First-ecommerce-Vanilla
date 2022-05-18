@@ -133,54 +133,95 @@ function adicionarCards (array) {
 }
 adicionarCards(data)
 
-// 1- Evento add cart
-// 2- conta de quantidade e valor
 // 3- Evento remove cart
 
 const cartZerado = document.querySelector(".dentro-cart")
 const listaVitrine = document.querySelector(".contDosProdutos")
+const listaCarrinho = document.querySelector(".carrinho")
 const cartCorpo = document.querySelector(".divCarrinho")
 const cartNovo = cartCorpo.insertAdjacentHTML("beforeend", `<ul class='listaCart'> </ul>`)
 const listaCart = document.querySelector(".listaCart")
 let qtdCart = 0
 let totalVendas = 0
-const divTotal = listaCart.insertAdjacentHTML("afterend",`<div class="totalCart"> </div>`)
+listaCart.insertAdjacentHTML("afterend",`<div class="totalCart invisivel" > </div>`)
 const pegarDivTotal = document.querySelector(".totalCart")
+pegarDivTotal.insertAdjacentHTML("beforeend", ` <p class="qtdDivCart"></p><p class="totalDivCart"></p>`)
+const divCartParagrafo = document.querySelector(".qtdDivCart")
+const divCartTotal = document.querySelector(".totalDivCart")
+const pegaLi = document.querySelector(".newPdt")
+// se nao precisar exclui dps
+const pegaNomeCart = document.querySelector(".nomeCart")
+const pegaPriceCart = document.querySelector(".priceCart")
+// const pegarLiComId = data[0].id
+
 
 listaVitrine.addEventListener("click", identificaItem) 
+listaCarrinho.addEventListener("click", identificaItem)
 
 function identificaItem (event) {
 
     const itemClick = event.target
     if (itemClick.tagName === "BUTTON") {
-        adicionarCarrinho (itemClick)
+      adicionarCarrinho (itemClick)
+    }
+
+    if (itemClick.classList == "removeCart") {
+      removeCarrinho(itemClick)
     }
 }
 
+const produtosCarrinho = []
+
+
+// tirar as repetições depois
 function adicionarCarrinho (button){ 
+  const numButton = button.id - 1
+  cartZerado.classList.add("dentroCartClick")
+  pegarDivTotal.classList.remove("invisivel")
+    listaCart.insertAdjacentHTML("beforeend", 
+      `<li class= "newPdt" id="${data[numButton].id}">
+         <img src= "${data[numButton].img}" class="imgCart">
+          <h3 class="nomeCart"> ${data[numButton].nameItem} </h3>
+          <br>
+          <p class="priceCart"> R$ ${data[numButton].value},00 </p>
+          <p class="removeCart" id="${data[numButton].id}"> Remover item </p>
+        </li>`)
+   qtdCart += 1
+    totalVendas += data[numButton].value
 
-    cartZerado.classList.add("dentroCartClick")
-    for(let i = 0; i <= data.length; i++){
-        if (button.id == i ) {
-            listaCart.insertAdjacentHTML("beforeend", 
-             `<li class= "newPdt">
-                <img src= "${data[i-1].img}" class="imgCart">
-                <h3 class="nomeCart"> ${data[i-1].nameItem} </h3>
-                <br>
-                <p class="priceCart"> R$ ${data[i-1].value},00 </p>
-                <p class="removeCart"> Remover item </p>
-             </li>`)
-            
-          qtdCart += 1
-          totalVendas += data[i-1].value
-        } 
-    
-    }
+  produtosCarrinho.push(data[numButton])
+  console.log(produtosCarrinho)
 
-    pegarDivTotal.insertAdjacentHTML("beforeend", 
-       ` <p class="qtdDivCart"> Quantidade: ${qtdCart} </p>
-        <p class="totalDivCart"> Total: R$ ${totalVendas},00 </p>`)
-    
+  divCartParagrafo.innerHTML = `Quantidade: ${qtdCart}`
+  divCartTotal.innerHTML = `Total: R$ ${totalVendas},00 `
 }
 
-// mandando att
+const ulToArray = document.getElementsByClassName("listaCart")
+
+
+// se for dar display invisível, utilizar o bubbling pra aplicar invisível no pai
+// transformar a Ul pai do carrinho em array e os LI em index
+// OU condicionar cada LI a um ID único ou colocar o ID do li baseado index do array UL
+// remover a li desse array
+function removeCarrinho (button) {
+  listaCart.innerHTML = ""
+  const procurar = produtosCarrinho.find((item) => button.id == item.id)
+  const indiceCarrinho = produtosCarrinho.indexOf(procurar)
+  totalVendas -= produtosCarrinho[indiceCarrinho].value
+  produtosCarrinho.splice(indiceCarrinho, 1)
+  console.log(produtosCarrinho)
+  for(let i = 0; i < produtosCarrinho.length; i++){
+    listaCart.insertAdjacentHTML("beforeend", 
+      `<li class= "newPdt" id="${produtosCarrinho[i].id}">
+         <img src= "${produtosCarrinho[i].img}" class="imgCart">
+          <h3 class="nomeCart"> ${produtosCarrinho[i].nameItem} </h3>
+          <br>
+          <p class="priceCart"> R$ ${produtosCarrinho[i].value},00 </p>
+          <p class="removeCart" id="${produtosCarrinho[i].id}"> Remover item </p>
+        </li>`)
+  }
+  qtdCart -= 1
+  divCartParagrafo.innerHTML = `Quantidade: ${qtdCart}`
+  divCartTotal.innerHTML = `Total: R$ ${totalVendas},00 `
+
+}  
